@@ -21,12 +21,12 @@ namespace Ink
             $this->lineParser = $lineParser;
         }
 
-        public function parse(string $input)
+        public function parse(string $input): array
         {
             $lines = $this->lineTokenizer->tokenize($input);
             $processed = $this->lineParser->parse($lines);
 
-            var_dump($processed);
+            return $processed;
         }
     }
 }

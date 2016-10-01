@@ -12,6 +12,7 @@ namespace Ink
     use Ink\Parsers\LineParsers\TextLineParser;
     use Ink\Parsers\LineParsers\UnorderedListLineParser;
     use Ink\Tokenizers\LineTokenizer;
+    use Timetabio\Generators\DomGenerator;
 
     require __DIR__ . '/../src/autoload.php';
 
@@ -24,6 +25,13 @@ namespace Ink
     $lineParser->registerParser(UnorderedListLine::class, new UnorderedListLineParser);
 
     $parser = new Parser(new LineTokenizer(), $lineParser);
+    $blocks = $parser->parse(file_get_contents(__DIR__ . '/example.txt'));
 
-    $parser->parse(file_get_contents(__DIR__ . '/example.txt'));
+    $document = (new \DOMImplementation())->createDocument(null, 'html');
+    $document->formatOutput = true;
+
+    $generator = new DomGenerator($document);
+
+    $document = $generator->generate($blocks);
+    echo $document->saveHTML();
 }

@@ -33,6 +33,8 @@ namespace Ink\Parsers\LineParser
                 $this->parseLine($line);
             }
 
+            $this->state->commit();
+
             return $this->state->getResult();
         }
 
