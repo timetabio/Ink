@@ -1,37 +1,37 @@
 <?php
-namespace Ink\Parsers\LineParsers
+namespace Ink\Parsers\LineParser\Parsers
 {
-    use Ink\Blocks\Paragraph;
+    use Ink\Blocks\UnorderedList;
     use Ink\Lines\LineInterface;
-    use Ink\Lines\TextLine;
+    use Ink\Lines\UnorderedListLine;
     use Ink\Parsers\LineParser\State;
 
-    class TextLineParser implements LineParserInterface
+    class UnorderedListLineParser implements LineParserInterface
     {
         public function parse(LineInterface $line, State $state)
         {
-            if (!($line instanceof TextLine)) {
+            if (!($line instanceof UnorderedListLine)) {
                 return;
             }
 
             $current = $this->getCurrent($state);
 
-            $current->addContent($line->getContent());
+            $current->addItem($line->getContent());
 
             $state->setCurrent($current);
         }
 
-        private function getCurrent(State $state): Paragraph
+        private function getCurrent(State $state): UnorderedList
         {
             $current = $state->getCurrent();
 
-            if ($current instanceof Paragraph) {
+            if ($current instanceof UnorderedList) {
                 return $current;
             }
 
             $state->commit();
 
-            return new Paragraph;
+            return new UnorderedList;
         }
     }
 }

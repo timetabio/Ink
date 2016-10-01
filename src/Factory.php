@@ -20,11 +20,11 @@ namespace Ink
         {
             $parser = new \Ink\Parsers\LineParser\Parser;
 
-            $parser->registerParser(\Ink\Lines\HeadingLine::class, new \Ink\Parsers\LineParsers\HeadingLineParser);
-            $parser->registerParser(\Ink\Lines\EmptyLine::class, new \Ink\Parsers\LineParsers\EmptyLineParser);
-            $parser->registerParser(\Ink\Lines\TextLine::class, new \Ink\Parsers\LineParsers\TextLineParser);
-            $parser->registerParser(\Ink\Lines\QuoteLine::class, new \Ink\Parsers\LineParsers\QuoteLineParser);
-            $parser->registerParser(\Ink\Lines\UnorderedListLine::class, new \Ink\Parsers\LineParsers\UnorderedListLineParser);
+            $parser->registerParser(\Ink\Lines\HeadingLine::class, new \Ink\Parsers\LineParser\Parsers\HeadingLineParser);
+            $parser->registerParser(\Ink\Lines\EmptyLine::class, new \Ink\Parsers\LineParser\Parsers\EmptyLineParser);
+            $parser->registerParser(\Ink\Lines\TextLine::class, new \Ink\Parsers\LineParser\Parsers\TextLineParser);
+            $parser->registerParser(\Ink\Lines\QuoteLine::class, new \Ink\Parsers\LineParser\Parsers\QuoteLineParser);
+            $parser->registerParser(\Ink\Lines\UnorderedListLine::class, new \Ink\Parsers\LineParser\Parsers\UnorderedListLineParser);
 
             return $parser;
         }

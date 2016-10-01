@@ -2,7 +2,7 @@
 namespace Ink\Parsers\LineParser
 {
     use Ink\Lines\LineInterface;
-    use Ink\Parsers\LineParsers\LineParserInterface;
+    use Ink\Parsers\LineParser\Parsers\LineParserInterface;
 
     class Parser
     {

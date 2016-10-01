@@ -1,5 +1,5 @@
 <?php
-namespace Ink\Parsers\LineParsers
+namespace Ink\Parsers\LineParser\Parsers
 {
     use Ink\Lines\EmptyLine;
     use Ink\Lines\LineInterface;

@@ -1,5 +1,5 @@
 <?php
-namespace Ink\Parsers\LineParsers
+namespace Ink\Parsers\LineParser\Parsers
 {
     use Ink\Lines\LineInterface;
     use Ink\Parsers\LineParser\State;
