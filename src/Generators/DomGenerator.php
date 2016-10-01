@@ -1,5 +1,5 @@
 <?php
-namespace Timetabio\Generators
+namespace Ink\Generators
 {
     use Ink\Blocks\BlockInterface;
     use Ink\Blocks\Heading;
