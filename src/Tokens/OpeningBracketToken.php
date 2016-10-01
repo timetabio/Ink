@@ -1,11 +1,11 @@
 <?php
 namespace Ink\Tokens
 {
-    class BacktickToken implements TokenInterface
+    class OpeningBracketToken implements TokenInterface
     {
         public function __toString(): string
         {
-            return '`';
+            return '[';
         }
     }
 }
