@@ -1,10 +1,10 @@
 <?php
-namespace Ink\Parsers\LineParser\Parsers
+namespace Ink\TokenParsers\LineParser\Parsers
 {
     use Ink\Blocks\Quote;
     use Ink\Lines\LineInterface;
     use Ink\Lines\QuoteLine;
-    use Ink\Parsers\LineParser\State;
+    use Ink\TokenParsers\LineParser\State;
 
     class QuoteLineParser implements LineParserInterface
     {

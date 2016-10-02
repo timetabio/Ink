@@ -1,10 +1,10 @@
 <?php
-namespace Ink\Parsers\LineParser\Parsers
+namespace Ink\TokenParsers\LineParser\Parsers
 {
     use Ink\Blocks\UnorderedList;
     use Ink\Lines\LineInterface;
     use Ink\Lines\UnorderedListLine;
-    use Ink\Parsers\LineParser\State;
+    use Ink\TokenParsers\LineParser\State;
 
     class UnorderedListLineParser implements LineParserInterface
     {

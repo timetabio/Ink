@@ -11,6 +11,8 @@ Jujubes brownie candy canes cotton candy candy canes. Sweet jujubes fruitcake so
 here comes some **bold text** and some //italic// text.
 you can also use `backticks` like in markdown
 
+oh, and by the `way`: formatting //can also **nest**//
+
 > finally here's a quote
  > this is not a quote
 

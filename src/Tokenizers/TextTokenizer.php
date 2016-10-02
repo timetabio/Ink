@@ -3,18 +3,16 @@ namespace Ink\Tokenizers
 {
     use Ink\Tokens\BacktickToken;
     use Ink\Tokens\BoldToken;
-    use Ink\Tokens\ClosingBracketToken;
     use Ink\Tokens\ItalicToken;
-    use Ink\Tokens\OpeningBracketToken;
     use Ink\Tokens\TextToken;
     use Ink\Tokens\TokenInterface;
 
     class TextTokenizer
     {
         /**
-         * @var array
+         * @var TokenInterface[]
          */
-        private $tokens = [];
+        private $result = [];
 
         /**
          * @var string
@@ -37,10 +35,10 @@ namespace Ink\Tokenizers
             $this->length = mb_strlen($input);
 
             while (!$this->isDone()) {
-                $this->tokens[] = $this->getToken();
+                $this->result[] = $this->getToken();
             }
 
-            return $this->tokens;
+            return $this->result;
         }
 
         private function getToken(): TokenInterface
@@ -55,14 +53,6 @@ namespace Ink\Tokenizers
 
             if ($this->expect('`')) {
                 return new BacktickToken;
-            }
-
-            if ($this->expect('[')) {
-                return new OpeningBracketToken;
-            }
-
-            if ($this->expect(']')) {
-                return new ClosingBracketToken;
             }
 
             return new TextToken($this->take(1));

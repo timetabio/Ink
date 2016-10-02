@@ -1,5 +1,5 @@
 <?php
-namespace Ink\Parsers\LineParser
+namespace Ink\TokenParsers\LineParser
 {
     use Ink\Blocks\BlockInterface;
 

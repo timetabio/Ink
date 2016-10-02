@@ -1,8 +1,8 @@
 <?php
-namespace Ink\Parsers\LineParser\Parsers
+namespace Ink\TokenParsers\LineParser\Parsers
 {
     use Ink\Lines\LineInterface;
-    use Ink\Parsers\LineParser\State;
+    use Ink\TokenParsers\LineParser\State;
 
     interface LineParserInterface
     {

@@ -1,10 +1,10 @@
 <?php
-namespace Ink\Parsers\LineParser\Parsers
+namespace Ink\TokenParsers\LineParser\Parsers
 {
     use Ink\Blocks\CodeBlock;
     use Ink\Lines\CodeBlockLine;
     use Ink\Lines\LineInterface;
-    use Ink\Parsers\LineParser\State;
+    use Ink\TokenParsers\LineParser\State;
 
     class CodeBlockLineParser implements LineParserInterface
     {
@@ -14,7 +14,7 @@ namespace Ink\Parsers\LineParser\Parsers
                 return;
             }
 
-            if (($state->getCurrent() instanceof CodeBlock)) {
+            if ($state->getCurrent() instanceof CodeBlock) {
                 $state->commit();
                 return;
             }

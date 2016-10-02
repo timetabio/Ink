@@ -13,11 +13,6 @@ namespace Ink\Tokens
             $this->content = $content;
         }
 
-        public function getContent(): string
-        {
-            return $this->content;
-        }
-
         public function __toString(): string
         {
             return $this->content;

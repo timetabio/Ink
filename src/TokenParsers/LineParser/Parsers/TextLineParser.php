@@ -1,12 +1,12 @@
 <?php
-namespace Ink\Parsers\LineParser\Parsers
+namespace Ink\TokenParsers\LineParser\Parsers
 {
     use Ink\Blocks\AbstractTextBlock;
     use Ink\Blocks\CodeBlock;
     use Ink\Blocks\Paragraph;
     use Ink\Lines\LineInterface;
     use Ink\Lines\TextLine;
-    use Ink\Parsers\LineParser\State;
+    use Ink\TokenParsers\LineParser\State;
 
     class TextLineParser implements LineParserInterface
     {
