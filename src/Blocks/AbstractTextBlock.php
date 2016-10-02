@@ -1,21 +1,35 @@
 <?php
 namespace Ink\Blocks
 {
+    use Ink\Texts\PlainText;
+    use Ink\Texts\TextInterface;
+
     abstract class AbstractTextBlock implements BlockInterface
     {
         /**
-         * @var array
+         * @var TextInterface[]
          */
-        private $content = [];
+        private $text = [];
 
-        public function addContent(string $content)
+        public function addText(TextInterface $text)
         {
-            $this->content[] = $content;
+            $this->text[] = $text;
         }
 
-        public function getContent(): array
+        public function addLine(array $texts)
         {
-            return $this->content;
+            if (isset($this->text[0])) {
+                $this->addText(new PlainText(' '));
+            }
+
+            foreach ($texts as $text) {
+                $this->addText($text);
+            }
+        }
+
+        public function getText(): array
+        {
+            return $this->text;
         }
     }
 }

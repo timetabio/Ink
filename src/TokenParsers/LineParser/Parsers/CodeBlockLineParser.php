@@ -14,8 +14,11 @@ namespace Ink\TokenParsers\LineParser\Parsers
                 return;
             }
 
-            if ($state->getCurrent() instanceof CodeBlock) {
-                $state->commit();
+            $previous = $state->getCurrent();
+
+            $state->commit();
+
+            if ($previous instanceof CodeBlock) {
                 return;
             }
 

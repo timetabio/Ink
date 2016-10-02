@@ -7,6 +7,10 @@ namespace Ink\Generators
     use Ink\Blocks\Paragraph;
     use Ink\Blocks\Quote;
     use Ink\Blocks\UnorderedList;
+    use Ink\Texts\PlainText;
+    use Ink\Texts\StyledText;
+    use Ink\Texts\TextInterface;
+    use Ink\TextStyles\TextStyleInterface;
 
     class DomGenerator
     {
@@ -52,16 +56,56 @@ namespace Ink\Generators
         {
             $element = $this->dom->createElement('p');
 
-            $element->appendChild($this->dom->createTextNode(implode(' ', $paragraph->getContent())));
+            $element->appendChild($this->processTexts($paragraph->getText()));
 
             return $element;
+        }
+
+        private function processTexts(array $texts): \DOMDocumentFragment
+        {
+            $fragment = $this->dom->createDocumentFragment();
+
+            foreach ($texts as $text) {
+                $fragment->appendChild($this->processText($text));
+            }
+
+            return $fragment;
+        }
+
+        private function processText(TextInterface $text)
+        {
+            if ($text instanceof PlainText) {
+                return $this->dom->createTextNode($text->getText());
+            }
+
+            $tag = $this->getTagForStyle($text->getStyle());
+
+            $element = $this->dom->createElement($tag);
+
+            $element->appendChild($this->processTexts($text->getContent()));
+
+            return $element;
+        }
+
+        private function getTagForStyle(TextStyleInterface $textStyle)
+        {
+            switch (get_class($textStyle)) {
+                case \Ink\TextStyles\Bold::class:
+                    return 'b';
+                case \Ink\TextStyles\Italic::class:
+                    return 'i';
+                case \Ink\TextStyles\Code::class:
+                    return 'code';
+            }
+
+            return 'span';
         }
 
         private function processQuote(Quote $quote): \DOMElement
         {
             $element = $this->dom->createElement('blockquote');
 
-            $element->appendChild($this->dom->createTextNode(implode(' ', $quote->getContent())));
+            $element->appendChild($this->processTexts($quote->getText()));
 
             return $element;
         }
@@ -70,9 +114,10 @@ namespace Ink\Generators
         {
             $element = $this->dom->createElement('ul');
 
-            foreach($list->getItems() as $item) {
+            foreach ($list->getItems() as $item) {
                 $itemElement = $this->dom->createElement('li');
-                $itemElement->appendChild($this->dom->createTextNode($item));
+
+                $itemElement->appendChild($this->processTexts($item));
 
                 $element->appendChild($itemElement);
             }
@@ -95,7 +140,7 @@ namespace Ink\Generators
             $code = $this->dom->createElement('code');
             $pre->appendChild($code);
 
-            $code->appendChild($this->dom->createTextNode(implode(PHP_EOL, $block->getContent())));
+            $code->appendChild($this->dom->createTextNode(implode(PHP_EOL, $block->getLines())));
 
             return $pre;
         }

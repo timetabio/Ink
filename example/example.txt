@@ -21,8 +21,8 @@ oh, and by the `way`: formatting //can also **nest**//
 > chained
 
 
-want to have a newline at the end
-of your line? two spaces to the resque
+want to have a break at the end of your line?
+of your line? two spaces to the rescue
 
 ### Todo
 
@@ -36,6 +36,7 @@ of your line? two spaces to the resque
 
 ### Code
 
+code is enclosed in fenced blocks (```)
 ```
 
 fn main() {

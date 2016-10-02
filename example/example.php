@@ -1,8 +1,6 @@
 <?php
 namespace Ink
 {
-    use Ink\Tokenizers\TextTokenizer;
-
     require __DIR__ . '/../src/autoload.php';
 
     $factory = new Factory();
@@ -13,11 +11,7 @@ namespace Ink
     $generator = $factory->createDomGenerator();
     $document = $generator->generate($blocks);
 
-    $textTokenizer = new TextTokenizer;
-    $result = $textTokenizer->tokenize('here comes `some **bold text** inside` and some **bold text** and some //italic// text, but this ** is plain text');
+    // var_dump($blocks);
 
-    $textParser = new \Ink\Parsers\TextParser\Parser();
-    $texts = $textParser->parse(new \Ink\Parsers\TextParser\State($result));
-
-    var_dump($texts);
+    echo $document->saveHTML();
 }

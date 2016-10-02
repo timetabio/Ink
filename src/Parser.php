@@ -1,32 +1,23 @@
 <?php
 namespace Ink
 {
-    use Ink\Tokenizers\LineTokenizer;
+    use Ink\Parsers\BlockParser;
 
     class Parser
     {
         /**
-         * @var LineTokenizer
+         * @var BlockParser
          */
-        private $lineTokenizer;
+        private $blockParser;
 
-        /**
-         * @var \Ink\Parsers\LineParser\Parser
-         */
-        private $lineParser;
-
-        public function __construct(LineTokenizer $lineTokenizer, \Ink\Parsers\LineParser\Parser $lineParser)
+        public function __construct(BlockParser $blockParser)
         {
-            $this->lineTokenizer = $lineTokenizer;
-            $this->lineParser = $lineParser;
+            $this->blockParser = $blockParser;
         }
 
         public function parse(string $input): array
         {
-            $lines = $this->lineTokenizer->tokenize($input);
-            $processed = $this->lineParser->parse($lines);
-
-            return $processed;
+            return $this->blockParser->parse($input);
         }
     }
 }

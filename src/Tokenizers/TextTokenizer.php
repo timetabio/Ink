@@ -31,6 +31,8 @@ namespace Ink\Tokenizers
 
         public function tokenize(string $input): array
         {
+            $this->result = [];
+            $this->position = 0;
             $this->input = $input;
             $this->length = mb_strlen($input);
 

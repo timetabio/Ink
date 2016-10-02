@@ -8,7 +8,7 @@ namespace Ink\Blocks
          */
         private $items = [];
 
-        public function addItem(string $item)
+        public function addItem(array $item)
         {
             $this->items[] = $item;
         }

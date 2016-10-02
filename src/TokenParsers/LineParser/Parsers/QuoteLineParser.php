@@ -4,10 +4,21 @@ namespace Ink\TokenParsers\LineParser\Parsers
     use Ink\Blocks\Quote;
     use Ink\Lines\LineInterface;
     use Ink\Lines\QuoteLine;
+    use Ink\Parsers\TextParser;
     use Ink\TokenParsers\LineParser\State;
 
     class QuoteLineParser implements LineParserInterface
     {
+        /**
+         * @var TextParser
+         */
+        private $textParser;
+
+        public function __construct(TextParser $textParser)
+        {
+            $this->textParser = $textParser;
+        }
+
         public function parse(LineInterface $line, State $state)
         {
             if (!($line instanceof QuoteLine)) {
@@ -15,8 +26,9 @@ namespace Ink\TokenParsers\LineParser\Parsers
             }
 
             $current = $this->getCurrent($state);
+            $texts = $this->textParser->parse($line->getContent());
 
-            $current->addContent($line->getContent());
+            $current->addLine($texts);
 
             $state->setCurrent($current);
         }

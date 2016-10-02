@@ -6,21 +6,47 @@ namespace Ink\TokenParsers\LineParser\Parsers
     use Ink\Blocks\Paragraph;
     use Ink\Lines\LineInterface;
     use Ink\Lines\TextLine;
+    use Ink\Parsers\TextParser;
     use Ink\TokenParsers\LineParser\State;
 
     class TextLineParser implements LineParserInterface
     {
+        /**
+         * @var TextParser
+         */
+        private $textParser;
+
+        public function __construct(TextParser $textParser)
+        {
+            $this->textParser = $textParser;
+        }
+
         public function parse(LineInterface $line, State $state)
         {
             if (!($line instanceof TextLine)) {
                 return;
             }
 
-            $current = $this->getCurrent($state);
+            if ($state->getCurrent() instanceof CodeBlock) {
+                return $this->handleCodeBlock($line, $state);
+            }
 
-            $current->addContent($line->getContent());
+            $this->handleParagraph($line, $state);
+        }
+
+        private function handleParagraph(TextLine $line, State $state)
+        {
+            $current = $this->getCurrent($state);
+            $texts = $this->textParser->parse($line->getContent());
+
+            $current->addLine($texts);
 
             $state->setCurrent($current);
+        }
+
+        private function handleCodeBlock(TextLine $line, State $state)
+        {
+            $state->getCurrent()->addLine($line->getContent());
         }
 
         private function getCurrent(State $state): AbstractTextBlock
@@ -28,10 +54,6 @@ namespace Ink\TokenParsers\LineParser\Parsers
             $current = $state->getCurrent();
 
             if ($current instanceof Paragraph) {
-                return $current;
-            }
-
-            if ($current instanceof CodeBlock) {
                 return $current;
             }
 
