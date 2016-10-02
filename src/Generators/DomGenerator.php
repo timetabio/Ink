@@ -2,6 +2,7 @@
 namespace Ink\Generators
 {
     use Ink\Blocks\BlockInterface;
+    use Ink\Blocks\CodeBlock;
     use Ink\Blocks\Heading;
     use Ink\Blocks\Paragraph;
     use Ink\Blocks\Quote;
@@ -42,10 +43,12 @@ namespace Ink\Generators
                     return $this->processQuote($block);
                 case UnorderedList::class:
                     return $this->processUnorderedList($block);
+                case CodeBlock::class:
+                    return $this->processCodeBlock($block);
             }
         }
 
-        private function processParagraph(Paragraph $paragraph)
+        private function processParagraph(Paragraph $paragraph): \DOMElement
         {
             $element = $this->dom->createElement('p');
 
@@ -54,7 +57,7 @@ namespace Ink\Generators
             return $element;
         }
 
-        private function processQuote(Quote $quote)
+        private function processQuote(Quote $quote): \DOMElement
         {
             $element = $this->dom->createElement('blockquote');
 
@@ -63,7 +66,7 @@ namespace Ink\Generators
             return $element;
         }
 
-        private function processUnorderedList(UnorderedList $list)
+        private function processUnorderedList(UnorderedList $list): \DOMElement
         {
             $element = $this->dom->createElement('ul');
 
@@ -77,12 +80,24 @@ namespace Ink\Generators
             return $element;
         }
 
-        private function processHeading(Heading $heading)
+        private function processHeading(Heading $heading): \DOMElement
         {
             $element = $this->dom->createElement('h' . $heading->getLevel());
             $element->appendChild($this->dom->createTextNode($heading->getContent()));
 
             return $element;
+        }
+
+        private function processCodeBlock(CodeBlock $block)
+        {
+            $pre = $this->dom->createElement('pre');
+
+            $code = $this->dom->createElement('code');
+            $pre->appendChild($code);
+
+            $code->appendChild($this->dom->createTextNode(implode(PHP_EOL, $block->getContent())));
+
+            return $pre;
         }
     }
 }

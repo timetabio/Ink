@@ -1,6 +1,8 @@
 <?php
 namespace Ink\Parsers\LineParser\Parsers
 {
+    use Ink\Blocks\AbstractTextBlock;
+    use Ink\Blocks\CodeBlock;
     use Ink\Blocks\Paragraph;
     use Ink\Lines\LineInterface;
     use Ink\Lines\TextLine;
@@ -21,11 +23,15 @@ namespace Ink\Parsers\LineParser\Parsers
             $state->setCurrent($current);
         }
 
-        private function getCurrent(State $state): Paragraph
+        private function getCurrent(State $state): AbstractTextBlock
         {
             $current = $state->getCurrent();
 
             if ($current instanceof Paragraph) {
+                return $current;
+            }
+
+            if ($current instanceof CodeBlock) {
                 return $current;
             }
 

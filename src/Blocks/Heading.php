@@ -3,7 +3,6 @@ namespace Ink\Blocks
 {
     class Heading implements BlockInterface
     {
-
         /**
          * @var int
          */

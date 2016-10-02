@@ -31,3 +31,13 @@ of your line? two spaces to the resque
 - this
 - is
 - a seconds list
+
+### Code
+
+```
+
+fn main() {
+  println!("Hello World!");
+}
+
+```

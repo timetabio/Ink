@@ -25,6 +25,7 @@ namespace Ink
             $parser->registerParser(\Ink\Lines\TextLine::class, new \Ink\Parsers\LineParser\Parsers\TextLineParser);
             $parser->registerParser(\Ink\Lines\QuoteLine::class, new \Ink\Parsers\LineParser\Parsers\QuoteLineParser);
             $parser->registerParser(\Ink\Lines\UnorderedListLine::class, new \Ink\Parsers\LineParser\Parsers\UnorderedListLineParser);
+            $parser->registerParser(\Ink\Lines\CodeBlockLine::class, new \Ink\Parsers\LineParser\Parsers\CodeBlockLineParser);
 
             return $parser;
         }

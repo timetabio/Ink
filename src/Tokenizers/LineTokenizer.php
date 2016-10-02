@@ -1,6 +1,7 @@
 <?php
 namespace Ink\Tokenizers
 {
+    use Ink\Lines\CodeBlockLine;
     use Ink\Lines\EmptyLine;
     use Ink\Lines\HeadingLine;
     use Ink\Lines\LineInterface;
@@ -44,6 +45,10 @@ namespace Ink\Tokenizers
 
             if ($firstChar === '#') {
                 return new HeadingLine(1, mb_substr($line, 1));
+            }
+
+            if (mb_substr($line, 0, 4) === '```') {
+                return new CodeBlockLine;
             }
 
             if (mb_strlen($line) === 0) {
