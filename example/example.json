@@ -1,0 +1,241 @@
+[
+    {
+        "type": "heading",
+        "level": 1,
+        "content": "Cupcake"
+    },
+    {
+        "type": "heading",
+        "level": 2,
+        "content": "Subtitle"
+    },
+    {
+        "type": "heading",
+        "level": 3,
+        "content": "Sub-Subtitle"
+    },
+    {
+        "type": "paragraph",
+        "content": [
+            {
+                "text": "Apple pie cheesecake icing caramels sweet cake. Halvah chocolate cake apple pie jelly beans pudding. Macaroon gingerbread cake souffl\u00e9. Chocolate cake sesame snaps gummi bears macaroon gummies."
+            }
+        ]
+    },
+    {
+        "type": "paragraph",
+        "content": [
+            {
+                "text": "Jujubes brownie candy canes cotton candy candy canes. Sweet jujubes fruitcake souffl\u00e9. Macaroon candy sweet. Donut gingerbread jelly beans cupcake topping. Macaroon dessert sugar plum cookie sugar plum donut croissant donut. Gummi bears drag\u00e9e pudding topping cake jujubes cookie wafer sweet."
+            }
+        ]
+    },
+    {
+        "type": "paragraph",
+        "content": [
+            {
+                "text": "here comes some "
+            },
+            {
+                "style": "bold",
+                "content": [
+                    {
+                        "text": "bold text"
+                    }
+                ]
+            },
+            {
+                "text": " and some "
+            },
+            {
+                "style": "italic",
+                "content": [
+                    {
+                        "text": "italic"
+                    }
+                ]
+            },
+            {
+                "text": " text."
+            },
+            {
+                "text": " "
+            },
+            {
+                "text": "you can also use "
+            },
+            {
+                "style": "code",
+                "content": [
+                    {
+                        "text": "backticks"
+                    }
+                ]
+            },
+            {
+                "text": " like in markdown"
+            }
+        ]
+    },
+    {
+        "type": "paragraph",
+        "content": [
+            {
+                "text": "oh, and by the "
+            },
+            {
+                "style": "code",
+                "content": [
+                    {
+                        "text": "way"
+                    }
+                ]
+            },
+            {
+                "text": ": formatting "
+            },
+            {
+                "style": "italic",
+                "content": [
+                    {
+                        "text": "can also "
+                    },
+                    {
+                        "style": "bold",
+                        "content": [
+                            {
+                                "text": "nest"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "type": "quote",
+        "content": [
+            {
+                "text": " finally here's a quote"
+            }
+        ]
+    },
+    {
+        "type": "paragraph",
+        "content": [
+            {
+                "text": " > this is not a quote"
+            }
+        ]
+    },
+    {
+        "type": "quote",
+        "content": [
+            {
+                "text": " but hey"
+            },
+            {
+                "text": " "
+            },
+            {
+                "text": " quotes can be"
+            },
+            {
+                "text": " "
+            },
+            {
+                "text": " chained"
+            }
+        ]
+    },
+    {
+        "type": "paragraph",
+        "content": [
+            {
+                "text": "want to have a break at the end of your line?"
+            },
+            {
+                "text": " "
+            },
+            {
+                "text": "two spaces to the rescue"
+            }
+        ]
+    },
+    {
+        "type": "heading",
+        "level": 3,
+        "content": "Todo"
+    },
+    {
+        "type": "list",
+        "list_type": "unordered",
+        "list_items": [
+            [
+                {
+                    "text": "Buy milk"
+                }
+            ],
+            [
+                {
+                    "text": "Buy eggs"
+                }
+            ],
+            [
+                {
+                    "text": "Buy oranges"
+                }
+            ]
+        ]
+    },
+    {
+        "type": "paragraph",
+        "content": [
+            {
+                "text": "<some text between the lists>"
+            }
+        ]
+    },
+    {
+        "type": "list",
+        "list_type": "unordered",
+        "list_items": [
+            [
+                {
+                    "text": "this"
+                }
+            ],
+            [
+                {
+                    "text": "is"
+                }
+            ],
+            [
+                {
+                    "text": "a seconds list"
+                }
+            ]
+        ]
+    },
+    {
+        "type": "heading",
+        "level": 3,
+        "content": "Code"
+    },
+    {
+        "type": "paragraph",
+        "content": [
+            {
+                "text": "code is enclosed in fenced blocks (```)"
+            }
+        ]
+    },
+    {
+        "type": "code_block",
+        "content": [
+            "fn main() {",
+            "  println!(\"Hello World!\");",
+            "}"
+        ]
+    }
+]

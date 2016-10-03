@@ -80,5 +80,19 @@ namespace Ink
                 (new \DOMImplementation())->createDocument(null, 'html')
             );
         }
+
+        public function createJsonGenerator(): \Ink\Generators\Json\Generator
+        {
+            $generator = new \Ink\Generators\Json\Generator;
+            $textHandler = new \Ink\Generators\Json\TextHandler;
+
+            $generator->registerHandler(new \Ink\Generators\Json\Handlers\CodeBlockHandler);
+            $generator->registerHandler(new \Ink\Generators\Json\Handlers\HeadingHandler);
+            $generator->registerHandler(new \Ink\Generators\Json\Handlers\ParagraphHandler($textHandler));
+            $generator->registerHandler(new \Ink\Generators\Json\Handlers\QuoteHandler($textHandler));
+            $generator->registerHandler(new \Ink\Generators\Json\Handlers\UnorderedListHandler($textHandler));
+
+            return $generator;
+        }
     }
 }

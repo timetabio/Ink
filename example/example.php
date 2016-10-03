@@ -3,15 +3,12 @@ namespace Ink
 {
     require __DIR__ . '/../src/autoload.php';
 
-    $factory = new Factory();
+    $factory = new Factory;
 
     $parser = $factory->createParser();
     $blocks = $parser->parse(file_get_contents(__DIR__ . '/example.txt'));
 
-    $generator = $factory->createDomGenerator();
-    $document = $generator->generate($blocks);
+    $generator = $factory->createJsonGenerator();
 
-    // var_dump($blocks);
-
-    echo $document->saveHTML();
+    echo json_encode($generator->generate($blocks), JSON_PRETTY_PRINT) . PHP_EOL;
 }

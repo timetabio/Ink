@@ -26,7 +26,7 @@ namespace Ink\TokenParsers\LineParser\Parsers
             }
 
             $current = $this->getCurrent($state);
-            $texts = $this->textParser->parse($line->getContent());
+            $texts = $this->textParser->parse(trim($line->getContent()));
 
             $current->addItem($texts);
 

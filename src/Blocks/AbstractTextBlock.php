@@ -7,7 +7,7 @@ namespace Ink\Blocks
     abstract class AbstractTextBlock implements BlockInterface
     {
         /**
-         * @var TextInterface[]
+         * @var TextInterface[][]
          */
         private $text = [];
 

@@ -22,7 +22,7 @@ oh, and by the `way`: formatting //can also **nest**//
 
 
 want to have a break at the end of your line?
-of your line? two spaces to the rescue
+two spaces to the rescue
 
 ### Todo
 

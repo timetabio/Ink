@@ -41,9 +41,6 @@ namespace Ink\TokenParsers\TextParser
                 return new PlainText($token);
             }
 
-            // skip to the first content token
-            $state->next();
-
             // find all the tokens between the current and the closing token
             $tokens = $state->getUntil(get_class($token));
 
@@ -53,7 +50,7 @@ namespace Ink\TokenParsers\TextParser
             }
 
             // move the cursor to the closing token
-            $state->next(count($tokens));
+            $state->next(count($tokens) + 1);
 
             $text = new StyledText($token->getTextStyle());
 

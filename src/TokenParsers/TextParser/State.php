@@ -50,8 +50,9 @@ namespace Ink\TokenParsers\TextParser
         public function getUntil(string $type)
         {
             $tokens = [];
+            $start = $this->current + 1;
 
-            for ($i = $this->current; $i < $this->total; $i++) {
+            for ($i = $start; $i < $this->total; $i++) {
                 $token = $this->input[$i];
 
                 if ($token instanceof $type) {
@@ -80,7 +81,13 @@ namespace Ink\TokenParsers\TextParser
 
         public function getNextToken()
         {
-            return $this->input[$this->current + 1];
+            $index = $this->current + 1;
+
+            if (!isset($this->input[$index])) {
+                return null;
+            }
+
+            return $this->input[$index];
         }
 
         public function getTexts(): array
