@@ -8,7 +8,6 @@ namespace Ink\Generators
     use Ink\Blocks\Quote;
     use Ink\Blocks\UnorderedList;
     use Ink\Texts\PlainText;
-    use Ink\Texts\StyledText;
     use Ink\Texts\TextInterface;
     use Ink\TextStyles\TextStyleInterface;
 

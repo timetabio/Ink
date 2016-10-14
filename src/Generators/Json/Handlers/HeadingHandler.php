@@ -3,7 +3,6 @@ namespace Ink\Generators\Json\Handlers
 {
     use Ink\Blocks\BlockInterface;
     use Ink\Blocks\Heading;
-    use Ink\Generators\Json\TextHandler;
 
     class HeadingHandler implements HandlerInterface
     {
