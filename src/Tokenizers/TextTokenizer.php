@@ -45,11 +45,11 @@ namespace Ink\Tokenizers
 
         private function getToken(): TokenInterface
         {
-            if ($this->expect('**')) {
+            if ($this->expect('*')) {
                 return new BoldToken;
             }
 
-            if ($this->expect('//')) {
+            if ($this->expect('_')) {
                 return new ItalicToken;
             }
 
