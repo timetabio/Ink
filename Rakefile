@@ -6,3 +6,13 @@ TARGETS = [
 ]
 
 multitask default: TARGETS
+
+desc 'Install dependencies'
+task :deps do
+  # todo
+end
+
+desc 'Run tests'
+task :test do
+  # todo
+end
