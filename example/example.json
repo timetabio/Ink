@@ -237,5 +237,31 @@
             "  println!(\"Hello World!\");",
             "}"
         ]
+    },
+    {
+        "type": "heading",
+        "level": 3,
+        "content": "Links"
+    },
+    {
+        "type": "paragraph",
+        "content": [
+            {
+                "text": "Let's show some "
+            },
+            {
+                "url": "https:\/\/love.org"
+            },
+            {
+                "text": " for "
+            },
+            {
+                "url": "https:\/\/letsencrypt.org",
+                "label": "Letsencrypt"
+            },
+            {
+                "text": " tada"
+            }
+        ]
     }
 ]

@@ -1,10 +1,12 @@
 <?php
 namespace Ink\TokenParsers\TextParser
 {
+    use Ink\Texts\LinkText;
     use Ink\Texts\PlainText;
     use Ink\Texts\StyledText;
     use Ink\Texts\TextInterface;
     use Ink\Tokens\FormatTokenInterface;
+    use Ink\Tokens\LinkStartToken;
     use Ink\Tokens\TextToken;
     use Ink\Tokens\TokenInterface;
 
@@ -27,6 +29,10 @@ namespace Ink\TokenParsers\TextParser
         {
             if ($token instanceof TextToken) {
                 return new PlainText($token);
+            }
+
+            if ($token instanceof LinkStartToken) {
+                return $this->handleLink($token, $state);
             }
 
             // this shouldn't happen
@@ -58,6 +64,29 @@ namespace Ink\TokenParsers\TextParser
             $text->setContent($this->parse(new State($tokens)));
 
             return $text;
+        }
+
+        private function handleLink(TokenInterface $token, State $state): TextInterface
+        {
+            $tokens = $state->getUntil(\Ink\Tokens\LinkEndToken::class);
+
+            if ($tokens === null) {
+                return new PlainText($token);
+            }
+
+            $state->next(count($tokens) + 1);
+
+            $content = implode('', $tokens);
+            $parts = explode('|', $content);
+
+            $url = $parts[0];
+            $label = null;
+
+            if (isset($parts[1])) {
+                $label = $parts[1];
+            }
+
+            return new LinkText($url, $label);
         }
     }
 }
