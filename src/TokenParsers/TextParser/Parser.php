@@ -9,6 +9,7 @@ namespace Ink\TokenParsers\TextParser
     use Ink\Tokens\LinkStartToken;
     use Ink\Tokens\TextToken;
     use Ink\Tokens\TokenInterface;
+    use Ink\ValueObjects\Url;
 
     class Parser
     {
@@ -74,17 +75,22 @@ namespace Ink\TokenParsers\TextParser
                 return new PlainText($token);
             }
 
-            $state->next(count($tokens) + 1);
-
             $content = implode('', $tokens);
             $parts = explode('|', $content);
 
-            $url = $parts[0];
             $label = null;
 
             if (isset($parts[1])) {
                 $label = $parts[1];
             }
+
+            try {
+                $url = new Url($parts[0]);
+            } catch (\Exception $exception) {
+                return new PlainText($token);
+            }
+
+            $state->next(count($tokens) + 1);
 
             return new LinkText($url, $label);
         }
