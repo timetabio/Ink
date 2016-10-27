@@ -57,6 +57,14 @@ namespace Ink\Tokenizers
                 return new BacktickToken;
             }
 
+            if ($this->expect('[[')) {
+                return new \Ink\Tokens\LinkStartToken;
+            }
+
+            if ($this->expect(']]')) {
+                return new \Ink\Tokens\LinkEndToken;
+            }
+
             return new TextToken($this->take(1));
         }
 

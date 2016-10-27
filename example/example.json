@@ -237,5 +237,84 @@
             "  println!(\"Hello World!\");",
             "}"
         ]
+    },
+    {
+        "type": "heading",
+        "level": 3,
+        "content": "Links"
+    },
+    {
+        "type": "paragraph",
+        "content": [
+            {
+                "text": "Let's show some "
+            },
+            {
+                "url": "https:\/\/love.org"
+            },
+            {
+                "text": " for "
+            },
+            {
+                "url": "https:\/\/letsencrypt.org",
+                "label": "Letsencrypt"
+            },
+            {
+                "text": " tada"
+            }
+        ]
+    },
+    {
+        "type": "paragraph",
+        "content": [
+            {
+                "text": "Links are ignored if the [[urls is invalid]] or even [[javascript:alert('malicious');]]"
+            }
+        ]
+    },
+    {
+        "type": "paragraph",
+        "content": [
+            {
+                "text": "Here are some more examples:"
+            }
+        ]
+    },
+    {
+        "type": "list",
+        "list_type": "unordered",
+        "list_items": [
+            [
+                {
+                    "url": "http:\/\/\uc2a4\ud0c0\ubc85\uc2a4\ucf54\ub9ac\uc544.com"
+                },
+                {
+                    "text": " - valid"
+                }
+            ],
+            [
+                {
+                    "text": "[[javascript:\/\/test%0Aalert(321)]] - invalid"
+                }
+            ],
+            [
+                {
+                    "text": "[[php:\/\/filter\/read=convert.base64-encode\/resource=\/etc\/passwd]] - invalid"
+                }
+            ],
+            [
+                {
+                    "text": "[[foo:\/\/bar]] - invalid"
+                }
+            ],
+            [
+                {
+                    "url": "https:\/\/en.wikipedia.org\/wiki\/Sia\/\/(god)"
+                },
+                {
+                    "text": " - valid"
+                }
+            ]
+        ]
     }
 ]

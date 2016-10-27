@@ -44,3 +44,17 @@ fn main() {
 }
 
 ```
+
+### Links
+
+Let's show some [[https://love.org]] for [[https://letsencrypt.org|Letsencrypt]] tada
+
+Links are ignored if the [[urls is invalid]] or even [[javascript:alert('malicious');]]
+
+Here are some more examples:
+
+- [[http://스타벅스코리아.com]] - valid
+- [[javascript://test%0Aalert(321)]] - invalid
+- [[php://filter/read=convert.base64-encode/resource=/etc/passwd]] - invalid
+- [[foo://bar]] - invalid
+- [[https://en.wikipedia.org/wiki/Sia_(god)]] - valid
