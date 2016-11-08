@@ -56,7 +56,7 @@ namespace Ink\TokenParsers\TextParser
                 return new PlainText($token);
             }
 
-            // move the cursor to the closing token
+            // move the cursor after the closing token
             $state->next(count($tokens) + 1);
 
             $text = new StyledText($token->getTextStyle());
