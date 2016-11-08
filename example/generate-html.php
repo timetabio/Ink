@@ -8,8 +8,10 @@ namespace Ink
     $parser = $factory->createParser();
     $blocks = $parser->parse(file_get_contents(__DIR__ . '/example.txt'));
 
-    $generator = $factory->createDomGenerator();
+    $document = new \DOMDocument;
+    $generator = $factory->createDomGenerator($document);
+
     $fragment = $generator->generate($blocks);
 
-    echo $fragment->ownerDocument->saveHTML($fragment) . PHP_EOL;
+    echo $document->saveHTML($fragment) . PHP_EOL;
 }

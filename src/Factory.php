@@ -88,14 +88,16 @@ namespace Ink
             return $generator;
         }
 
-        public function createDomGenerator(): \Ink\Generators\Dom\Generator
+        public function createDomGenerator(\DOMDocument $document): \Ink\Generators\Dom\Generator
         {
-            $generator = new \Ink\Generators\Dom\Generator;
+            $generator = new \Ink\Generators\Dom\Generator($document);
             $textRenderer = $this->createDomTextRenderer();
 
             $generator->registerRenderer(new \Ink\Generators\Dom\BlockRenderers\HeadingRenderer);
             $generator->registerRenderer(new \Ink\Generators\Dom\BlockRenderers\CodeBlockRenderer);
             $generator->registerRenderer(new \Ink\Generators\Dom\BlockRenderers\ParagraphRenderer($textRenderer));
+            $generator->registerRenderer(new \Ink\Generators\Dom\BlockRenderers\BlockquoteRenderer($textRenderer));
+            $generator->registerRenderer(new \Ink\Generators\Dom\BlockRenderers\UnorderedListRenderer($textRenderer));
 
             return $generator;
         }
@@ -106,6 +108,7 @@ namespace Ink
 
             $renderer->registerRenderer(new \Ink\Generators\Dom\TextRenderers\PlainTextRenderer);
             $renderer->registerRenderer(new \Ink\Generators\Dom\TextRenderers\LinkTextRenderer);
+            $renderer->registerRenderer(new \Ink\Generators\Dom\TextRenderers\StyledTextRenderer($renderer));
 
             return $renderer;
         }

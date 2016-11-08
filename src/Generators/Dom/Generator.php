@@ -1,7 +1,7 @@
 <?php
 namespace Ink\Generators\Dom
 {
-    use \Ink\Generators\Dom\BlockRenderers\BlockRendererInterface;
+    use Ink\Generators\Dom\BlockRenderers\BlockRendererInterface;
 
     class Generator
     {
@@ -10,6 +10,16 @@ namespace Ink\Generators\Dom
          */
         private $renderers;
 
+        /**
+         * @var \DOMDocument
+         */
+        private $document;
+
+        public function __construct(\DOMDocument $document)
+        {
+            $this->document = $document;
+        }
+
         public function registerRenderer(BlockRendererInterface $renderer)
         {
             $this->renderers[$renderer->getType()] = $renderer;
@@ -17,10 +27,9 @@ namespace Ink\Generators\Dom
 
         public function generate(array $blocks): \DOMDocumentFragment
         {
-            $document = new \DOMDocument;
-            $root = $document->createDocumentFragment();
+            $root = $this->document->createDocumentFragment();
 
-            foreach($blocks as $block) {
+            foreach ($blocks as $block) {
                 $type = get_class($block);
 
                 // TODO: catch non-existing renderer
@@ -30,7 +39,7 @@ namespace Ink\Generators\Dom
 
                 $renderer = $this->renderers[$type];
 
-                $root->appendChild($renderer->render($document, $block));
+                $root->appendChild($renderer->render($this->document, $block));
             }
 
             return $root;
