@@ -74,13 +74,6 @@ namespace Ink
             return new \Ink\TokenParsers\TextParser\Parser;
         }
 
-        public function createDomGenerator(): \Ink\Generators\DomGenerator
-        {
-            return new \Ink\Generators\DomGenerator(
-                (new \DOMImplementation())->createDocument(null, 'html')
-            );
-        }
-
         public function createJsonGenerator(): \Ink\Generators\Json\Generator
         {
             $generator = new \Ink\Generators\Json\Generator;
@@ -93,6 +86,28 @@ namespace Ink
             $generator->registerHandler(new \Ink\Generators\Json\Handlers\UnorderedListHandler($textHandler));
 
             return $generator;
+        }
+
+        public function createDomGenerator(): \Ink\Generators\Dom\Generator
+        {
+            $generator = new \Ink\Generators\Dom\Generator;
+            $textRenderer = $this->createDomTextRenderer();
+
+            $generator->registerRenderer(new \Ink\Generators\Dom\BlockRenderers\HeadingRenderer);
+            $generator->registerRenderer(new \Ink\Generators\Dom\BlockRenderers\CodeBlockRenderer);
+            $generator->registerRenderer(new \Ink\Generators\Dom\BlockRenderers\ParagraphRenderer($textRenderer));
+
+            return $generator;
+        }
+
+        public function createDomTextRenderer(): \Ink\Generators\Dom\TextRenderer
+        {
+            $renderer = new \Ink\Generators\Dom\TextRenderer;
+
+            $renderer->registerRenderer(new \Ink\Generators\Dom\TextRenderers\PlainTextRenderer);
+            $renderer->registerRenderer(new \Ink\Generators\Dom\TextRenderers\LinkTextRenderer);
+
+            return $renderer;
         }
     }
 }

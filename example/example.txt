@@ -51,6 +51,8 @@ Let's show some [[https://love.org]] for [[https://letsencrypt.org|Letsencrypt]]
 
 Links are ignored if the [[urls is invalid]] or even [[javascript:alert('malicious');]]
 
+You can also not have http:// [[www.google.com]]
+
 Here are some more examples:
 
 - [[http://스타벅스코리아.com]] - valid
