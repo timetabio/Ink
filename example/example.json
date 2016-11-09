@@ -276,6 +276,17 @@
         "type": "paragraph",
         "content": [
             {
+                "text": "You can also not have http:\/\/ "
+            },
+            {
+                "url": "http:\/\/www.google.com"
+            }
+        ]
+    },
+    {
+        "type": "paragraph",
+        "content": [
+            {
                 "text": "Here are some more examples:"
             }
         ]
