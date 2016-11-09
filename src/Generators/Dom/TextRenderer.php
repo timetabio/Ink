@@ -22,9 +22,8 @@ namespace Ink\Generators\Dom
             foreach ($texts as $text) {
                 $type = get_class($text);
 
-                // TODO: catch non-existing renderer
                 if (!isset($this->renderers[$type])) {
-                    continue;
+                    throw new \Exception('No renderer found for text type ' . $type);
                 }
 
                 $renderer = $this->renderers[$type];

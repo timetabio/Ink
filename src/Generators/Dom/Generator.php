@@ -32,9 +32,8 @@ namespace Ink\Generators\Dom
             foreach ($blocks as $block) {
                 $type = get_class($block);
 
-                // TODO: catch non-existing renderer
                 if (!isset($this->renderers[$type])) {
-                    continue;
+                    throw new \Exception('No renderer found for block type ' . $type);
                 }
 
                 $renderer = $this->renderers[$type];
