@@ -7,7 +7,7 @@ namespace Ink\Tokens
     {
         public function __toString(): string
         {
-            return '//';
+            return '_';
         }
 
         public function getTextStyle(): TextStyleInterface
