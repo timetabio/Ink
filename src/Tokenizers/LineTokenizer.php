@@ -47,7 +47,7 @@ namespace Ink\Tokenizers
                 return new HeadingLine(1, mb_substr($line, 1));
             }
 
-            if (mb_substr($line, 0, 4) === '```') {
+            if (mb_substr($line, 0, 3) === '```') {
                 return new CodeBlockLine;
             }
 
