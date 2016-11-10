@@ -7,7 +7,7 @@ namespace Ink\Tokens
     {
         public function __toString(): string
         {
-            return '**';
+            return '*';
         }
 
         public function getTextStyle(): TextStyleInterface
