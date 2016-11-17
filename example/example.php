@@ -10,5 +10,5 @@ namespace Ink
 
     $generator = $factory->createJsonGenerator();
 
-    echo json_encode($generator->generate($blocks), JSON_PRETTY_PRINT) . PHP_EOL;
+    echo json_encode($generator->generate($blocks)->getJson(), JSON_PRETTY_PRINT) . PHP_EOL;
 }

@@ -4,7 +4,7 @@ namespace Ink\Generators\Json
     use Ink\Blocks\BlockInterface;
     use Ink\Generators\Json\Handlers\HandlerInterface;
 
-    class Generator
+    class Generator implements \Ink\Generators\Generator
     {
         /**
          * @var HandlerInterface[]
@@ -16,9 +16,9 @@ namespace Ink\Generators\Json
             $this->handlers[$handler->getType()] = $handler;
         }
 
-        public function generate(array $blocks): array
+        public function generate(array $blocks): \Ink\Generators\GeneratorResult
         {
-            return array_map([$this, 'handleBlock'], $blocks);
+            return new GeneratorResult(array_map([$this, 'handleBlock'], $blocks));
         }
 
         protected function handleBlock(BlockInterface $block)
