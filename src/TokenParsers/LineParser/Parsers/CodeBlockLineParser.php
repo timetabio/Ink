@@ -10,7 +10,7 @@ namespace Ink\TokenParsers\LineParser\Parsers
     {
         public function parse(LineInterface $line, State $state)
         {
-            if (!($line instanceof CodeBlockLine)) {
+            if (!$line instanceof CodeBlockLine) {
                 return;
             }
 
