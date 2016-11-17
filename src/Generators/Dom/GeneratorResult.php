@@ -1,8 +1,6 @@
 <?php
-
 namespace Ink\Generators\Dom
 {
-
     class GeneratorResult implements \Ink\Generators\GeneratorResult
     {
         /**
