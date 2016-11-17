@@ -8,7 +8,7 @@ namespace Ink
     $parser = $factory->createParser();
     $blocks = $parser->parse(file_get_contents(__DIR__ . '/example.txt'));
 
-    $generator = $factory->createDomGenerator(new \DOMDocument);
+    $generator = $factory->createDomGenerator();
 
     $result = $generator->generate($blocks);
 

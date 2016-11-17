@@ -88,9 +88,9 @@ namespace Ink
             return $generator;
         }
 
-        public function createDomGenerator(\DOMDocument $document): \Ink\Generators\Dom\Generator
+        public function createDomGenerator(): \Ink\Generators\Dom\Generator
         {
-            $generator = new \Ink\Generators\Dom\Generator($document);
+            $generator = new \Ink\Generators\Dom\Generator;
             $textRenderer = $this->createDomTextRenderer();
 
             $generator->registerRenderer(new \Ink\Generators\Dom\BlockRenderers\HeadingRenderer);

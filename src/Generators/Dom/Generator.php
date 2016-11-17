@@ -10,16 +10,6 @@ namespace Ink\Generators\Dom
          */
         private $renderers;
 
-        /**
-         * @var \DOMDocument
-         */
-        private $document;
-
-        public function __construct(\DOMDocument $document)
-        {
-            $this->document = $document;
-        }
-
         public function registerRenderer(BlockRendererInterface $renderer)
         {
             $this->renderers[$renderer->getType()] = $renderer;
@@ -27,7 +17,8 @@ namespace Ink\Generators\Dom
 
         public function generate(array $blocks): \Ink\Generators\GeneratorResult
         {
-            $root = $this->document->createDocumentFragment();
+            $document = new \DOMDocument;
+            $root = $document->createDocumentFragment();
 
             foreach ($blocks as $block) {
                 $type = get_class($block);
@@ -38,12 +29,12 @@ namespace Ink\Generators\Dom
 
                 $renderer = $this->renderers[$type];
 
-                $root->appendChild($renderer->render($this->document, $block));
+                $root->appendChild($renderer->render($document, $block));
             }
 
-            $this->document->appendChild($root);
+            $document->appendChild($root);
 
-            return new GeneratorResult($this->document);
+            return new GeneratorResult($document);
         }
     }
 }
