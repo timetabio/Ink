@@ -3,7 +3,7 @@ namespace Ink\Generators\Dom
 {
     use Ink\Generators\Dom\BlockRenderers\BlockRendererInterface;
 
-    class Generator
+    class Generator implements \Ink\Generators\Generator
     {
         /**
          * @var BlockRendererInterface[]
@@ -25,7 +25,7 @@ namespace Ink\Generators\Dom
             $this->renderers[$renderer->getType()] = $renderer;
         }
 
-        public function generate(array $blocks): \DOMDocumentFragment
+        public function generate(array $blocks): \Ink\Generators\GeneratorResult
         {
             $root = $this->document->createDocumentFragment();
 
@@ -41,7 +41,9 @@ namespace Ink\Generators\Dom
                 $root->appendChild($renderer->render($this->document, $block));
             }
 
-            return $root;
+            $this->document->appendChild($root);
+
+            return new GeneratorResult($this->document);
         }
     }
 }
