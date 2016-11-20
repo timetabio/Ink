@@ -27,10 +27,6 @@ namespace Ink\TokenParsers\LineParser\Parsers
                 return;
             }
 
-            if ($state->getCurrent() instanceof CodeBlock) {
-                return $this->handleCodeBlock($line, $state);
-            }
-
             $this->handleParagraph($line, $state);
         }
 
@@ -42,11 +38,6 @@ namespace Ink\TokenParsers\LineParser\Parsers
             $current->addLine($texts);
 
             $state->setCurrent($current);
-        }
-
-        private function handleCodeBlock(TextLine $line, State $state)
-        {
-            $state->getCurrent()->addLine($line->getContent());
         }
 
         private function getCurrent(State $state): AbstractTextBlock

@@ -46,6 +46,13 @@ namespace Ink\TokenParsers\LineParser
                 throw new \RuntimeException('no parser found for line type ' . $type);
             }
 
+            $current = $this->state->getCurrent();
+
+            if ($current instanceof \Ink\Blocks\CodeBlock && !$line instanceof \Ink\Lines\CodeBlockLine) {
+                $current->addLine((string) $line);
+                return;
+            }
+
             $this->parsers[$type]->parse($line, $this->state);
         }
     }

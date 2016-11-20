@@ -1,7 +1,6 @@
 <?php
 namespace Ink\TokenParsers\LineParser\Parsers
 {
-    use Ink\Blocks\CodeBlock;
     use Ink\Lines\EmptyLine;
     use Ink\Lines\LineInterface;
     use Ink\TokenParsers\LineParser\State;
@@ -11,10 +10,6 @@ namespace Ink\TokenParsers\LineParser\Parsers
         public function parse(LineInterface $line, State $state)
         {
             if (!($line instanceof EmptyLine)) {
-                return;
-            }
-
-            if ($state->getCurrent() instanceof CodeBlock) {
                 return;
             }
 
