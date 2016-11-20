@@ -34,5 +34,10 @@ namespace Ink\Texts
         {
             $this->content = $content;
         }
+
+        public function __toString(): string
+        {
+            return implode('', $this->content);
+        }
     }
 }

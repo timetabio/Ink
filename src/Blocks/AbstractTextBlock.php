@@ -7,7 +7,7 @@ namespace Ink\Blocks
     abstract class AbstractTextBlock implements BlockInterface
     {
         /**
-         * @var TextInterface[][]
+         * @var TextInterface[]
          */
         private $text = [];
 
@@ -30,6 +30,11 @@ namespace Ink\Blocks
         public function getText(): array
         {
             return $this->text;
+        }
+
+        public function __toString(): string
+        {
+            return implode('', $this->text);
         }
     }
 }

@@ -112,5 +112,10 @@ namespace Ink
 
             return $renderer;
         }
+
+        public function createPreviewTransformation(int $maxLength = 140): \Ink\Transformations\PreviewTransformation
+        {
+            return new \Ink\Transformations\PreviewTransformation($maxLength);
+        }
     }
 }
