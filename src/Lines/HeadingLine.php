@@ -28,5 +28,10 @@ namespace Ink\Lines
         {
             return $this->content;
         }
+
+        public function __toString(): string
+        {
+            return str_repeat('#', $this->level) . $this->content;
+        }
     }
 }

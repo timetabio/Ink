@@ -17,5 +17,10 @@ namespace Ink\Lines
         {
             return $this->content;
         }
+
+        public function __toString(): string
+        {
+            return $this->getContent();
+        }
     }
 }
