@@ -60,3 +60,26 @@ Here are some more examples:
 - [[php://filter/read=convert.base64-encode/resource=/etc/passwd]] - invalid
 - [[foo://bar]] - invalid
 - [[https://en.wikipedia.org/wiki/Sia_(god)]] - valid
+
+
+### More Code
+
+```
+public function createDomTextRenderer(): \Ink\Generators\Dom\TextRenderer
+{
+    $renderer = new \Ink\Generators\Dom\TextRenderer;
+
+    $renderer->registerRenderer(new \Ink\Generators\Dom\TextRenderers\PlainTextRenderer);
+    $renderer->registerRenderer(new \Ink\Generators\Dom\TextRenderers\LinkTextRenderer);
+    $renderer->registerRenderer(new \Ink\Generators\Dom\TextRenderers\StyledTextRenderer($renderer));
+
+    return $renderer;
+}
+```
+
+### ... and some ruby code
+
+```
+# hello world
+puts 'Hello World'
+```

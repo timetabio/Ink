@@ -233,9 +233,11 @@
     {
         "type": "code_block",
         "content": [
+            "",
             "fn main() {",
             "  println!(\"Hello World!\");",
-            "}"
+            "}",
+            ""
         ]
     },
     {
@@ -326,6 +328,38 @@
                     "text": " - valid"
                 }
             ]
+        ]
+    },
+    {
+        "type": "heading",
+        "level": 3,
+        "content": "More Code"
+    },
+    {
+        "type": "code_block",
+        "content": [
+            "public function createDomTextRenderer(): \\Ink\\Generators\\Dom\\TextRenderer",
+            "{",
+            "    $renderer = new \\Ink\\Generators\\Dom\\TextRenderer;",
+            "",
+            "    $renderer->registerRenderer(new \\Ink\\Generators\\Dom\\TextRenderers\\PlainTextRenderer);",
+            "    $renderer->registerRenderer(new \\Ink\\Generators\\Dom\\TextRenderers\\LinkTextRenderer);",
+            "    $renderer->registerRenderer(new \\Ink\\Generators\\Dom\\TextRenderers\\StyledTextRenderer($renderer));",
+            "",
+            "    return $renderer;",
+            "}"
+        ]
+    },
+    {
+        "type": "heading",
+        "level": 3,
+        "content": "... and some ruby code"
+    },
+    {
+        "type": "code_block",
+        "content": [
+            "# hello world",
+            "puts 'Hello World'"
         ]
     }
 ]
