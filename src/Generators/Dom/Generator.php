@@ -32,7 +32,9 @@ namespace Ink\Generators\Dom
                 $root->appendChild($renderer->render($document, $block));
             }
 
-            $document->appendChild($root);
+            if ($root->childNodes->length > 0) {
+                $document->appendChild($root);
+            }
 
             return new GeneratorResult($document);
         }
