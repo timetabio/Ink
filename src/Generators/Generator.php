@@ -3,6 +3,6 @@ namespace Ink\Generators
 {
     interface Generator
     {
-        public function generate(array $block): \Ink\Generators\GeneratorResult;
+        public function generate(array $blocks): \Ink\Generators\GeneratorResult;
     }
 }

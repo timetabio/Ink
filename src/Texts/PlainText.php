@@ -22,5 +22,10 @@ namespace Ink\Texts
         {
             return $this->text;
         }
+
+        public function __toString(): string
+        {
+            return $this->text;
+        }
     }
 }

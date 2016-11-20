@@ -33,5 +33,14 @@ namespace Ink\Texts
         {
             return $this->label;
         }
+
+        public function __toString(): string
+        {
+            if ($this->hasLabel()) {
+                return $this->label;
+            }
+
+            return $this->url;
+        }
     }
 }
