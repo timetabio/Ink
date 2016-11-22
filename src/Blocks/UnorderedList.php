@@ -17,5 +17,16 @@ namespace Ink\Blocks
         {
             return $this->items;
         }
+
+        public function __toString(): string
+        {
+            $items = [];
+
+            foreach ($this->items as $item) {
+                $items[] = '- ' . implode('', $item);
+            }
+
+            return implode(PHP_EOL, $items);
+        }
     }
 }

@@ -113,6 +113,11 @@ namespace Ink
             return $renderer;
         }
 
+        public function createTextGenerator(): \Ink\Generators\Text\Generator
+        {
+            return new \Ink\Generators\Text\Generator;
+        }
+
         public function createPreviewTransformation(int $maxLength = 140): \Ink\Transformations\PreviewTransformation
         {
             return new \Ink\Transformations\PreviewTransformation($maxLength);

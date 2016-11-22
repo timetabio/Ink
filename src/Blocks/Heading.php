@@ -28,5 +28,10 @@ namespace Ink\Blocks
         {
             return $this->content;
         }
+
+        public function __toString(): string
+        {
+            return $this->content;
+        }
     }
 }

@@ -22,5 +22,10 @@ namespace Ink\Blocks
         {
             return implode(PHP_EOL, $this->lines);
         }
+
+        public function __toString(): string
+        {
+            return $this->getImplodedLines();
+        }
     }
 }
