@@ -1,7 +1,6 @@
 <?php
 namespace Ink\TokenParsers\LineParser\Parsers
 {
-    use Ink\Blocks\CodeBlock;
     use Ink\Blocks\Heading;
     use Ink\Lines\HeadingLine;
     use Ink\Lines\LineInterface;
