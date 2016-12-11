@@ -1,10 +1,12 @@
 <?php
 namespace Ink\Texts
 {
+    use Ink\ValueObjects\Url;
+
     class LinkText implements TextInterface
     {
         /**
-         * @var string
+         * @var Url
          */
         private $url;
 
@@ -13,13 +15,13 @@ namespace Ink\Texts
          */
         private $label;
 
-        public function __construct(string $url, string $label = null)
+        public function __construct(Url $url, string $label = null)
         {
             $this->url = $url;
             $this->label = $label;
         }
 
-        public function getUrl(): string
+        public function getUrl(): Url
         {
             return $this->url;
         }
@@ -40,7 +42,7 @@ namespace Ink\Texts
                 return $this->label;
             }
 
-            return $this->url;
+            return $this->url->getHostname();
         }
     }
 }

@@ -39,13 +39,10 @@ namespace Ink\Generators\Json
 
         private function handleLink(\Ink\Texts\LinkText $link): array
         {
-            $result = ['url' => $link->getUrl()];
-
-            if ($link->hasLabel()) {
-                $result['label'] = $link->getLabel();
-            }
-
-            return $result;
+            return [
+                'url' => (string) $link->getUrl(),
+                'label' => (string) $link
+            ];
         }
     }
 }

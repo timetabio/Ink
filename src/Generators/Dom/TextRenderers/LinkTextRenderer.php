@@ -9,16 +9,10 @@ namespace Ink\Generators\Dom\TextRenderers
         {
             /** @var \Ink\Texts\LinkText $text */
 
-            $label = $text->getUrl();
-
-            if ($text->hasLabel()) {
-                $label = $text->getLabel();
-            }
-
             $linkElement = $document->createElement('a');
             $linkElement->setAttribute('href', $text->getUrl());
 
-            $linkText = $document->createTextNode($label);
+            $linkText = $document->createTextNode((string) $text);
             $linkElement->appendChild($linkText);
 
             return $linkElement;

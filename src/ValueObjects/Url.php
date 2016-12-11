@@ -73,6 +73,11 @@ namespace Ink\ValueObjects
             return preg_match($this->pattern, $url);
         }
 
+        public function getHostname(): string
+        {
+            return parse_url($this->url, PHP_URL_HOST);
+        }
+
         public function __toString(): string
         {
             return $this->url;

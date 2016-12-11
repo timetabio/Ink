@@ -252,7 +252,8 @@
                 "text": "Let's show some "
             },
             {
-                "url": "https:\/\/love.org"
+                "url": "https:\/\/love.org",
+                "label": "love.org"
             },
             {
                 "text": " for "
@@ -281,7 +282,8 @@
                 "text": "You can also not have http:\/\/ "
             },
             {
-                "url": "http:\/\/www.google.com"
+                "url": "http:\/\/www.google.com",
+                "label": "www.google.com"
             }
         ]
     },
@@ -299,14 +301,6 @@
         "list_items": [
             [
                 {
-                    "url": "http:\/\/\uc2a4\ud0c0\ubc85\uc2a4\ucf54\ub9ac\uc544.com"
-                },
-                {
-                    "text": " - valid"
-                }
-            ],
-            [
-                {
                     "text": "[[javascript:\/\/test%0Aalert(321)]] - invalid"
                 }
             ],
@@ -322,7 +316,8 @@
             ],
             [
                 {
-                    "url": "https:\/\/en.wikipedia.org\/wiki\/Sia_(god)"
+                    "url": "https:\/\/en.wikipedia.org\/wiki\/Sia_(god)",
+                    "label": "en.wikipedia.org"
                 },
                 {
                     "text": " - valid"
