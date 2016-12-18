@@ -35,12 +35,12 @@ namespace Ink\Transformations
 
             $result = '';
 
-            foreach ($words as $word) {
+            foreach ($words as $i => $word) {
                 $currentText = trim($result . ' ' . $word);
                 $currentLength = mb_strlen($currentText);
 
                 if ($currentLength > $this->maxLength) {
-                    return $result;
+                    return rtrim($result, ". \t\n\r\x0B") . '...';
                 }
 
                 $result = $currentText;
@@ -52,7 +52,7 @@ namespace Ink\Transformations
         private function createParagraph(string $content): array
         {
             $paragraph = new Paragraph;
-            $text = new PlainText(rtrim($content, ". \t\n\r\x0B") . '...');
+            $text = new PlainText($content);
 
             $paragraph->addText($text);
 
