@@ -1,6 +1,8 @@
 <?php
 namespace Ink
 {
+    use Ink\Generators\Dom\GeneratorOptions;
+
     require __DIR__ . '/../src/autoload.php';
 
     $factory = new Factory;
@@ -11,7 +13,7 @@ namespace Ink
     $transformation = $factory->createPreviewTransformation();
 
     $result = $transformation->apply($blocks);
-    $generator = $factory->createDomGenerator();
+    $generator = $factory->createDomGenerator(new GeneratorOptions);
 
     echo $generator->generate($result) . PHP_EOL;
 }

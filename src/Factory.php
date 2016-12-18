@@ -88,10 +88,10 @@ namespace Ink
             return $generator;
         }
 
-        public function createDomGenerator(): \Ink\Generators\Dom\Generator
+        public function createDomGenerator(\Ink\Generators\Dom\GeneratorOptions $options): \Ink\Generators\Dom\Generator
         {
             $generator = new \Ink\Generators\Dom\Generator;
-            $textRenderer = $this->createDomTextRenderer();
+            $textRenderer = $this->createDomTextRenderer($options);
 
             $generator->registerRenderer(new \Ink\Generators\Dom\BlockRenderers\HeadingRenderer);
             $generator->registerRenderer(new \Ink\Generators\Dom\BlockRenderers\CodeBlockRenderer);
@@ -102,12 +102,12 @@ namespace Ink
             return $generator;
         }
 
-        public function createDomTextRenderer(): \Ink\Generators\Dom\TextRenderer
+        public function createDomTextRenderer(\Ink\Generators\Dom\GeneratorOptions $options): \Ink\Generators\Dom\TextRenderer
         {
             $renderer = new \Ink\Generators\Dom\TextRenderer;
 
             $renderer->registerRenderer(new \Ink\Generators\Dom\TextRenderers\PlainTextRenderer);
-            $renderer->registerRenderer(new \Ink\Generators\Dom\TextRenderers\LinkTextRenderer);
+            $renderer->registerRenderer(new \Ink\Generators\Dom\TextRenderers\LinkTextRenderer($options));
             $renderer->registerRenderer(new \Ink\Generators\Dom\TextRenderers\StyledTextRenderer($renderer));
 
             return $renderer;
