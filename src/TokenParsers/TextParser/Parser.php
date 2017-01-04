@@ -5,6 +5,7 @@ namespace Ink\TokenParsers\TextParser
     use Ink\Texts\PlainText;
     use Ink\Texts\StyledText;
     use Ink\Texts\TextInterface;
+    use Ink\Tokens\EscapeToken;
     use Ink\Tokens\FormatTokenInterface;
     use Ink\Tokens\LinkStartToken;
     use Ink\Tokens\TextToken;
@@ -30,6 +31,10 @@ namespace Ink\TokenParsers\TextParser
         {
             if ($token instanceof TextToken) {
                 return new PlainText($token);
+            }
+
+            if ($token instanceof EscapeToken) {
+                return $this->handleEscapeToken($token, $state);
             }
 
             if ($token instanceof LinkStartToken) {
@@ -93,6 +98,19 @@ namespace Ink\TokenParsers\TextParser
             $state->next(count($tokens) + 1);
 
             return new LinkText($url, $label);
+        }
+
+        private function handleEscapeToken(EscapeToken $token, State $state): TextInterface
+        {
+            $next = $state->getNextToken();
+
+            if ($next instanceof TextToken || $next === null) {
+                return new PlainText($token);
+            }
+
+            $state->next();
+
+            return new PlainText($next);
         }
     }
 }

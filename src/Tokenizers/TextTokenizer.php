@@ -65,6 +65,10 @@ namespace Ink\Tokenizers
                 return new \Ink\Tokens\LinkEndToken;
             }
 
+            if ($this->expect('\\')) {
+                return new \Ink\Tokens\EscapeToken;
+            }
+
             return new TextToken($this->take(1));
         }
 
