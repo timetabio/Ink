@@ -24,7 +24,11 @@ namespace Ink\Generators\Dom\BlockRenderers
 
             foreach($block->getItems() as $item) {
                 $listItem = $document->createElement('li');
-                $listItem->appendChild($this->textRenderer->render($document, $item));
+                $listItemContent = $this->textRenderer->render($document, $item);
+
+                if ($listItemContent->childNodes->length > 0) {
+                    $listItem->appendChild($listItemContent);
+                }
 
                 $list->appendChild($listItem);
             }
